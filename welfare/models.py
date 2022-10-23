@@ -6,7 +6,7 @@ from django.db.models import Sum
 # Create your models here.
 
 from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
+
 
 from membership.models import Member
 
