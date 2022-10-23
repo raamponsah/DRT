@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,15 +31,6 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-INSTALLED_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -47,9 +39,50 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'church.middleware.Church.check_authenticated_user',
+    # 'church.middleware.ClassBasedMiddlewareWhiteListViews.ChurchAuthMiddlewareWhiteList',
+    'church.middleware.ClassBasedMiddleware.ChurchAuthMiddleware',
+    'church.middleware.ChurchSetup.church_setup_middleware',
+]
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'import_export',
+    'django_resized',
+    'sorl.thumbnail',
+    'crispy_forms',
+    'dashboard',
+    'membership.apps.MembershipConfig',
+    'welfare',
+    'donations',
+    'groups',
+    'pledges',
+    'cevents',
+    'levy',
+    'announcement',
+    'offerings',
+    'church_services',
+    'projects',
+    'expenses',
+    'accounts',
+    'church',
+    'cashbook',
+    # 'django_countries'
 ]
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'churchclicks.urls'
+# CRISPY_TEMPLATE_PACK = 'bootstrap4'
+ROOT_URLCONF = 'churchclicks.urls'
+DJANGORESIZED_DEFAULT_SIZE = [1920, 1080]
+DJANGORESIZED_DEFAULT_QUALITY = 75
+DJANGORESIZED_DEFAULT_KEEP_META = True
+DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
+DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
+DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
 
 TEMPLATES = [
     {
@@ -67,8 +100,11 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'churchclicks.wsgi.application'
+DATETIME_INPUT_FORMATS = [
+        '%Y-%m-%d %H:%M',        # '2006-10-25 14:30'
+]
 
+WSGI_APPLICATION = 'churchclicks.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -103,6 +139,10 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'accounts.User'
+
+LOGIN_REDIRECT_URL = 'dashboard/'
+LOGOUT_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -115,11 +155,21 @@ USE_I18N = True
 
 USE_TZ = True
 
+EMAIL_CONFIRMATION_PERIOD_DAYS = 7
+SIMPLE_EMAIL_CONFIRMATION_PERIOD = timedelta(days=EMAIL_CONFIRMATION_PERIOD_DAYS)
+SIMPLE_EMAIL_CONFIRMATION_KEY_LENGTH = 16
+SIMPLE_EMAIL_CONFIRMATION_EMAIL_ADDRESS_MODEL = 'helloralph@vineboard.com'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
+STATIC_URL = '/static/'
 
-STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
