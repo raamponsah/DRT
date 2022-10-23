@@ -1,0 +1,63 @@
+ul.errorlist{
+    color:red;
+    list-style:none;
+}
+
+.app-auth-wrapper{
+    /*background:#1AB970;*/
+  /*  background: url('../images/background/bg2.png') no-repeat center center fixed !important;*/
+  /*-webkit-background-size: cover;*/
+  /*-moz-background-size: cover;*/
+  /*-o-background-size: cover;*/
+  /*background-size: cover;*/
+}
+
+/*.app-auth-body{*/
+/*    margin-top:50px;*/
+/*    background: white;*/
+/*    padding: 20px;*/
+/*    border-radius: 3px;*/
+/*    box-shadow:2px 4px 3px rgba(0,0,0,0.06)*/
+/*}*/
+
+.auth-background-holder{
+    background: url('../images/background/green.png') no-repeat center center fixed !important;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover !important;
+}
+
+a.paginate_button.previous {
+    padding: 10px;
+    background: lightgreen;
+    border: 1px solid green;
+    color:green;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+a.paginate_button.previous.disabled {
+    padding: 10px;
+    background: #c7c7c7;
+    border: 1px solid #c7c7c7;
+    color:black;
+    border-radius: 5px;
+    margin: 10px;
+}
+a.paginate_button.next {
+    padding: 10px;
+    background: #15a362 !important;
+    border: 1px solid #15a362;
+    color:white;
+    border-radius: 5px;
+    margin: 10px;
+}
+a.paginate_button.next.disabled {
+    padding: 10px;
+    background: #c7c7c7 !important;
+    border: 1px solid #c7c7c7;
+    color:black;
+    border-radius: 5px;
+    margin: 10px;
+}
