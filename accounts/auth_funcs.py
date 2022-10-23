@@ -1,7 +1,7 @@
 from cryptography.fernet import Fernet
 
 from accounts.models import ActivateUser
-from churchclicks import settings
+from mysite import settings
 from datetime import datetime, timedelta
 
 # Using current time

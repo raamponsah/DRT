@@ -1,4 +1,4 @@
-from churchclicks.settings import mailjet
+from mysite.settings import mailjet
 
 
 def send_mail(to_email, to_name, subject, message):
