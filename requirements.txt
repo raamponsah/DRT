@@ -7,3 +7,4 @@ django-import-export==3.0.1
 django-resized==1.0.2
 Pillow==9.1.1
 sorl-thumbnail==11.12
+django-crispy-forms==1.14.0
